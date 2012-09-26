@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>millwright</title>
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+		
+    </head>
+    <body>
+
+	<!-- Coupling Alignment -->	
+        <div data-role="page" data-theme="d" id="home">
+            <div data-theme="b" data-role="header" data-theme="b">
+                <a href="index.html" data-icon="home">Home</a>			
+                <h3>
+                    Coupling Alignment
+                </h3>
+				<a href="index.html" data-icon="info">Info</a>
+            </div>
+            <div data-role="content" >
+			
+				<style>
+					table { width:100%; }
+					table thead th { text-align:center; border-bottom-width:1px; border-top-width:1px; }
+					table th, td { text-align:center; padding:6px;} 
+				</style>
+			
+		<form id="calculator">
+				
+				
+		<table summary="this table for indicator readings.">
+
+		  <tbody>
+		    <tr>
+		      <td></td>  
+		      <td>12</td>  
+		      <td>3</td>
+		      <td>6</td> 
+		      <td>9</td> 			  
+		    </tr>
+
+		  <tr>
+		    <td>Rim</td>
+		    <td><input id="r12" placeholder="" value="0" type="number" step="0.001" min="0" data-mini="true" disabled="disabled"/></td>
+		    <td><input id="r3" placeholder="" value="0" type="number" step="0.001" min="0" data-mini="true"/></td>
+		    <td><input id="r6" placeholder="" value="0" type="number" step="0.001" min="0" data-mini="true"/></td>
+		    <td><input id="r9" placeholder="" value="0" type="number" step="0.001" min="0" data-mini="true"/></td>
+		  </tr>
+		  <tr>
+		    <td>Face</td>
+		    <td><input id="f12" placeholder="" value="0" type="number" step="0.001" min="0" data-mini="true" disabled="disabled"/></td>
+		    <td><input id="f3" placeholder="" value="0" type="number" step="0.001" min="0" data-mini="true"/></td>
+			<td><input id="f6" placeholder="" value="0" type="number" step="0.001" min="0" data-mini="true"/></td>
+		    <td><input id="f9" placeholder="" value="0" type="number" step="0.001" min="0" data-mini="true"/></td>
+		  </tr>
+
+		  </tbody>
+		</table>
+				
+			    <div style="">
+                    <img style="width: 286px; height: px" src="images/rimseven.JPG" />
+                </div>
+				
+		<table summary="this table for measurements.">
+
+		  <thead>
+		    <tr> 
+		      <th scope="col">A</th>  
+		      <th scope="col">B</th>
+		      <th scope="col">C</th> 			  
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		  <tr>
+		    <td><input id="coupling" placeholder="" value="" type="number" step="0.001" min="0" data-mini="true"/></td>
+		    <td><input id="ffeet" placeholder="" value="" type="number" step="0.001" min="0" data-mini="true"/></td>
+		    <td><input id="rfeet" placeholder="" value="" type="number" step="0.001" min="0" data-mini="true"/></td>			
+		  </tr>
+
+		  </tbody>
+		</table>
+        
+		<div class="ui-grid-a">
+			<div class="ui-block-a"><button id="reset" type="reset" data-theme="c" name="reset" data-mini="true">Reset</button></div>
+			<div class="ui-block-b"><button id="submit" type="submit" data-theme="b" name="submit" data-mini="true">Submit</button></div>
+		</div>
+					
+			
+
+					
+				<div style="">
+                    <img style="width: 286px; height: px" src="images/rimfour.JPG" />
+                </div>
+		<table summary="this table for movements up down.">
+		  <tbody>
+		  <tr>
+		    <td><p>Shim Change</p></td>
+		    <td><input id="tir1" placeholder=""  name="tir1" type="number" disabled="disabled"/></td>
+		    <td><input id="tir2" placeholder=""  name="tir2" type="number" disabled="disabled"/></td>			
+		  </tr>
+
+		  </tbody>
+		</table>				
+				
+				<div style="">
+                    <img style="width: 286px; height: px" src="images/rimsix.JPG" />
+                </div>
+		<table summary="this table for movements up down.">
+		  <tbody>
+		  <tr>
+		    <td><p>Side Shift</p></td>
+		    <td><input id="tir3" placeholder=""  name="tir3" type="number" disabled="disabled"/></td>
+		    <td><input id="tir4" placeholder=""  name="tir4" type="number" disabled="disabled"/></td>			
+		  </tr>
+
+		  </tbody>
+		</table>					
+				
+				
+		
+ 
+	        <script type="text/javascript"><!--
+				// define a function to perform our calculation.
+				function calculate () {
+					// retrieve the values from the amount and percentage fields
+					// and store them in variables.
+					var coupling = parseFloat($('#coupling').val());
+					var ffeet = parseFloat($('#ffeet').val());
+					var rfeet = parseFloat($('#rfeet').val());
+					var r3 = parseFloat($('#r3').val());
+					var r6 = parseFloat($('#r6').val())/2;
+					var r9 = parseFloat($('#r9').val());
+					var f3 = parseFloat($('#f3').val());
+					var f6 = parseFloat($('#f6').val());
+					var f9 = parseFloat($('#f9').val())*2;
+
+										
+					// also calculate the total.
+					
+					// Note the 'Number' function: amount is actually a string
+					// and adding a number to a string just makes a longer
+					// string, so we convert it to a number first.
+				
+					var tir1 = f6 * ffeet /coupling + r6;
+					var tir2 = f6 * (ffeet + rfeet) /coupling + r6;
+					var tir3 = ((r3 + r9) / 2 - r9) + ((f6 - f9) * ffeet /coupling);
+					var tir4 = ((r3 + r9) / 2 - r9) + ((f6 - f9) * (ffeet + rfeet) /coupling);
+
+					
+					// Store the values in the result fields
+					
+					// Note that we call the 'toFixed' function,
+					// which is a property of all numbers. This
+					// makes sure there are only two digits after
+					// the decimal point.
+					$('#tir1').val( tir1.toFixed(3) );
+					$('#tir2').val( tir2.toFixed(3) );
+					$('#tir3').val( tir3.toFixed(4) );
+					$('#tir4').val( tir4.toFixed(4) );					
+
+					
+					// submit event fucntions must return false,
+					// to tell the browser not to load a new page.
+					return false;
+				}
+
+				// attach our function to the form's submit event.
+				$('#calculator').submit( calculate );
+				$('#reset').click(function() {
+					$('#r3').val('0').number('refresh');
+					$('#r6').val('0').number('refresh');
+					$('#r9').val('0').number('refresh');
+					$('#f3').val('0').number('refresh');
+					$('#f6').val('0').number('refresh');
+					$('#f9').val('0').number('refresh');
+				
+				});
+
+			</script>
+
+				</form>	
+            </div>
+        </div>
+ 
+
+
+
+		
+
+
+		<script src="phonegap.js"></script>
+
+		
+
+		
+    </body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" maximum-scale=3, user-scalable=yes"/>
+        <title>Coupling Align Pro</title>
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+    </head>
+    <body>
+
+	<!-- Millwright -->		
+        <div data-role="page" data-theme="d" id="home">
+            <div data-theme="b" data-role="header">	
+                <h1>
+                    Coupling Align Pro
+                </h1>
+            </div>
+			
+            <div data-role="content" style="padding: 15px">
+			<p>A coupling is the connection of two shafts for the purpose of transmitting power. Typical coupled-shaft arrangements include Motors and Pumps, gearboxes, fans, compressors & turbines. Coupling alignment refers to achieving a perfect rotational centreline between the two of more shafts that are coupled together, in order for the shafts to transmit power efficiently.</p> 
+                <ul data-role="listview" data-divider-theme="e" data-inset="true">
+                    <li>
+                        <a href="#softfoot" data-transition="slide">
+                            Soft Foot
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#barsag" data-transition="flip" rel="external">
+                            Bar Sag
+                        </a>
+                    </li>
+					<li>
+                        <a href="#thermalgrowth" data-transition="slide" rel="external">
+                            Thermal Growth
+                        </a>
+                    </li>
+                    <li>
+                        <a href="couplingAlignment.html" data-transition="slide" rel="external">
+                            Reverse Dial
+                        </a>
+                    </li>
+                </ul>
+				
+            </div>
+			
+			
+        </div>
+        <!-- Soft Foot -->
+        <div data-role="page" data-theme="d" id="softfoot" >
+            <div data-theme="b" data-role="header">
+                <a href="#home" data-icon="home">Home</a>
+				<h1>
+                    Soft Foot
+                </h1>
+				<a class="button back" href="#">Back</a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+			<p>Soft foot can be compared to a bar stool that has a short leg creating a rock. When that foot is tightened it will distort the motor frame. , if uncorrected on a piece of rotating machinery serious damage will result to the internal parts of both units.</br></p>
+			    <div style="">
+                    <img style="width: 286px; height: px" src="images/soft_foot_angular.JPG" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Bar Sag -->
+        <div data-role="page" data-theme="d" id="barsag" >
+            <div data-theme="b" data-role="header">
+                <a href="#home" data-icon="home">Home</a>
+				<h1>
+                    Bar Sag
+                </h1>
+            </div>
+            <div data-role="content" style="padding: 15px">
+			<p>Bar Sag is the effect of gravity on the dial indicator reading. The value affects the bottom reading during coupling alignment using dial indicators.</p>
+						    <div style="">
+                    <img style="width: 286px; height: px" src="images/barsag.JPG" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Thermal Growth -->
+        <div data-role="page" data-theme="d" id="thermalgrowth" >
+            <div data-theme="b" data-role="header">
+                <a href="#home" data-icon="home">Home</a>
+				<h1>
+                    Thermal Growth
+                </h1>
+            </div>
+            <div data-role="content" style="padding: 15px">
+			<p>Thermal Growth is effect of expansion or contraction on a given machine All materials expand and contract at different rates.</br></br>T = change in average temperature between hot and cold in Fahrenheit</br></br>L = inches at the shimplane to centerline</br></br>C = coefficient of machine material</p>
+                <form id="thermalgrowth">
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <label for="t">
+                                T:
+                            </label>
+                            <input id="t" placeholder=""  name="t" value="" type="number" step="0.001" min="0"/>
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <label for="l">
+                                L:
+                            </label>
+                            <input id="l" placeholder=""  name="l" value="" type="number" step="0.001" min="0"/>
+                        </fieldset>
+                    </div>
+					
+
+					<div data-role="fieldcontain">	
+						<label for="c" class="select">C:</label>					
+							<select name="c" id="c" data-native-menu="false" >
+								<option value=".000006">Carbon Steel</option>
+								<option value=".0000059">Cast Iron</option>
+								<option value=".0000095">Stainless Steel</option>
+								<option value=".0000073">Nickel Steel</option>
+								<option value=".00001">Bronze</option>
+							</select>
+					</div>					
+								
+                    <div class="ui-grid-a">
+						<div class="ui-block-a"><button id="reset" type="reset" data-theme="c" name="reset">Reset</button></div>
+						<div class="ui-block-b"><button id="submit" type="submit" data-theme="b" name="submit" >Submit</button></div>
+					</div>
+
+					<div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <label for="tg">
+                                Thermal Growth
+                            </label>
+                            <input id="tg" placeholder=""  name="tg" type="number" disabled="disabled"/>
+                        </fieldset>
+                    </div>
+				
+	        <script type="text/javascript"><!--
+				// define a function to perform our calculation.
+				function calculate () {
+					// retrieve the values from the amount and percentage fields
+					// and store them in variables.
+					var t = $('#t').val();
+					var l = $('#l').val();
+					var c = $('#c').val();					
+					// also calculate the total.
+					
+					// Note the 'Number' function: amount is actually a string
+					// and adding a number to a string just makes a longer
+					// string, so we convert it to a number first.
+					var tg = Number(t) * l * c ;
+					
+					// Store the values in the result fields
+					
+					// Note that we call the 'toFixed' function,
+					// which is a property of all numbers. This
+					// makes sure there are only two digits after
+					// the decimal point.
+					$('#tg').val( tg.toFixed(3) );
+					
+					// submit event fucntions must return false,
+					// to tell the browser not to load a new page.
+					return false;
+				}
+
+				// attach our function to the form's submit event.
+				$('#thermalgrowth').submit( calculate );
+				$('#reset').click(function() {
+					$('#t').val('0').number('refresh');
+					$('#l').val('0').number('refresh');
+					$('#tg').val('0').number('refresh');
+				});
+
+			</script>
+				</form>				
+            </div>
+        </div>
+
+	
+
+		
+
+
+		<script src="phonegap.js"></script>
+
+		
+
+		
+    </body>
+</html>
