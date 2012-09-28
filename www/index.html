@@ -134,43 +134,31 @@
                         </fieldset>
                     </div>
 				
-	        <script type="text/javascript"><!--
-				// define a function to perform our calculation.
-				function calculate () {
-					// retrieve the values from the amount and percentage fields
-					// and store them in variables.
-					var t = $('#t').val();
-					var l = $('#l').val();
-					var c = $('#c').val();					
-					// also calculate the total.
-					
-					// Note the 'Number' function: amount is actually a string
-					// and adding a number to a string just makes a longer
-					// string, so we convert it to a number first.
-					var tg = Number(t) * l * c ;
-					
-					// Store the values in the result fields
-					
-					// Note that we call the 'toFixed' function,
-					// which is a property of all numbers. This
-					// makes sure there are only two digits after
-					// the decimal point.
-					$('#tg').val( tg.toFixed(3) );
-					
-					// submit event fucntions must return false,
-					// to tell the browser not to load a new page.
-					return false;
-				}
+					<script type="text/javascript">
 
-				// attach our function to the form's submit event.
-				$('#thermalgrowth').submit( calculate );
-				$('#reset').click(function() {
-					$('#t').val('0').number('refresh');
-					$('#l').val('0').number('refresh');
-					$('#tg').val('0').number('refresh');
-				});
+						 function calculate () {
 
-			</script>
+							var t = $('#t').val();
+							var l = $('#l').val();
+							var c = $('#c').val();					
+							
+							var tg = Number(t) * Number(l) * Number(c) ;
+							
+							$('#tg').val( tg.toFixed(3) );
+							
+							// submit event fucntions must return false,
+							// to tell the browser not to load a new page.
+							return false;
+						}
+
+						$('#thermalgrowth').submit( calculate );
+						$('#reset').click(function() {
+							$('#t').val('0').number('refresh');
+							$('#l').val('0').number('refresh');
+							$('#tg').val('0').number('refresh');
+						});
+
+					</script>
 				</form>				
             </div>
         </div>
